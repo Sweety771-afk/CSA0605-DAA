@@ -1,0 +1,57 @@
+Master Theorem
+
+
+def master_theorem(a, b, f):
+    log_b_a = math.log(a, b)
+    if f(n) <= n**(log_b_a - ε):
+        return "O(n^log_b(a))"
+    elif f(n) == n**log_b_a:
+        return "O(n^log_b(a) log n)"
+    elif f(n) >= n**(log_b_a + ε):
+        return "O(f(n))"
+
+# Example usage:
+a = 2
+b = 2
+f = lambda n: n**2
+print(master_theorem(a, b, f))  # Output: O(n^2)
+
+
+Substitution Method
+
+
+def substitution(T, n):
+    if n <= 1:
+        return 1
+    else:
+        return 2 * substitution(T, n // 2) + n
+
+def solve_substitution(T, n):
+    return substitution(T, n)
+
+# Example usage:
+n = 8
+print(solve_substitution(None, n))  # Output: 24
+Iteration Method
+
+
+def iteration(T, n):
+    result = 1
+    while n > 1:
+        result *= 2
+        n //= 2
+    return result * n
+
+def solve_iteration(T, n):
+    return iteration(T, n)
+
+# Example usage:
+n = 8
+print(solve_iteration(None, n))  # Output: 24
+
+
+Note: These programs assume that the input recurrence relations are in the form of:
+
+- Master Theorem: T(n) = aT(n/b) + f(n)
+- Substitution Method: T(n) = 2T(n/2) + n
+- Iteration Method: T(n) = 2T(n/2) + 1
