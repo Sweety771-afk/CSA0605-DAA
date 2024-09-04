@@ -1,0 +1,32 @@
+# Non-Recursive Algorithm
+def sum_non_recursive(n):
+    """
+    Calculate the sum of numbers from 1 to n using a non-recursive approach.
+
+    Time Complexity: O(n)
+    Space Complexity: O(1)
+    """
+    sum = 0
+    for i in range(1, n + 1):
+        sum += i
+    return sum
+
+# Recursive Algorithm
+def sum_recursive(n):
+    """
+    Calculate the sum of numbers from 1 to n using a recursive approach.
+
+    Time Complexity: O(n)
+    Space Complexity: O(n)
+    """
+    if n == 1:
+        return 1
+    else:
+        return n + sum_recursive(n - 1)
+
+# Test the functions
+n = 10
+print("Sum of numbers from 1 to", n, "(non-recursive):", 
+sum_non_recursive(n))
+print("Sum of numbers from 1 to", n, "(recursive):", sum_recursive(n))
+
