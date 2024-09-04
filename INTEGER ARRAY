@@ -1,0 +1,25 @@
+def intersect(nums1, nums2):
+    """
+    Return the intersection of two arrays, with each element appearing as many times as it shows in both arrays.
+
+    Parameters:
+    nums1 (list): first integer array
+    nums2 (list): second integer array
+
+    Returns:
+    list: intersection of nums1 and nums2
+    """
+    from collections import Counter
+    count1 = Counter(nums1)
+    count2 = Counter(nums2)
+    result = []
+    for num in count1:
+        if num in count2:
+            result.extend([num] * min(count1[num], count2[num]))
+    return result
+
+# Example usage:
+nums1 = [1, 2, 2, 3, 4]
+nums2 = [2, 2, 4, 5, 6]
+print(intersect(nums1, nums2))  # Output: [2, 2, 4]
+
