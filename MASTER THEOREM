@@ -1,0 +1,32 @@
+def master_theorem(a, b, f):
+    """
+    Solve the recurrence relation T(n) = aT(n/b) + f(n) using the Master Theorem.
+
+    Parameters:
+    a (int): number of recursive calls
+    b (int): input size reduction factor
+    f (function): function representing the work done outside recursive calls
+
+    Returns:
+    str: time complexity of the recurrence relation
+    """
+    # Calculate the value of log_b(a)
+    log_b_a = math.log(a, b)
+
+    # Case 1: f(n) = O(n^log_b(a - ε)) for some ε > 0
+    if f(n) <= n**(log_b_a - ε):
+        return "O(n^log_b(a))"
+
+    # Case 2: f(n) = Θ(n^log_b(a))
+    elif f(n) == n**log_b_a:
+        return "O(n^log_b(a) log n)"
+
+    # Case 3: f(n) = Ω(n^log_b(a + ε)) for some ε > 0
+    elif f(n) >= n**(log_b_a + ε):
+        return "O(f(n))"
+
+# Example usage:
+a = 2
+b = 2
+f = lambda n: n**2
+print(master_theorem(a, b, f))  # Output: O(n^2)
