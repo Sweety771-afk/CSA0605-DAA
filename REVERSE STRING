@@ -1,0 +1,11 @@
+def reverse_string(s):
+    if len(s) == 0:
+        return s
+    else:
+        return reverse_string(s[1:]) + s[0]
+
+# Test the function
+str = input("Enter a string: ")
+print("Reverse of", str, "is:", reverse_string(str))
+
+
