@@ -1,0 +1,18 @@
+def is_perfect(n):
+    sum = 0
+    for i in range(1, n):
+        if n % i == 0:
+            sum += i
+    return sum == n
+
+def find_perfect_numbers(limit):
+    perfect_numbers = []
+    for i in range(1, limit + 1):
+        if is_perfect(i):
+            perfect_numbers.append(i)
+    return perfect_numbers
+
+# Test the function
+limit = int(input("Enter a limit: "))
+print("Perfect numbers up to", limit, "are:", find_perfect_numbers(limit))
+
